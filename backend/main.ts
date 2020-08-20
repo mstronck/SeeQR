@@ -6,6 +6,7 @@ import { join } from 'path';
 import { format } from 'url';
 import { Children } from 'react';
 import database from './controllers';
+const db = require('./modal');
 
 /************************************************************
  ********* CREATE & CLOSE WINDOW UPON INITIALIZATION *********
@@ -130,7 +131,15 @@ ipcMain.on('skip-file-upload', (event) => {});
 ipcMain.on('execute-query', (event, query: string) => {
   console.log('query sent from frontend', query);
   // Process
-  // Send result back to renderer
+  db.query(query)
+  .then(data => {
+    console.log("In then statement")
+    data = data.rows;
+    // Send result back to renderer
+    console.log(data);
+    console.log(data[0])
+    
+  }).catch(err => console.log(err + "\n ----------------------------ERROR------------------------"))
 });
 
 // Listen for schema edits sent from renderer
@@ -139,3 +148,27 @@ ipcMain.on('edit-schema', (event, schema: string) => {
   // Process
   // Send result back to renderer
 });
+
+//1
+// SELECT A.id, A.name, A.description, B.id, B.name, B.description
+// FROM your_schema.parent_table A
+// INNER JOIN your_schema.child_table B ON A.id=B.parent_table_id;
+
+//2
+// SELECT A.id, A.name
+// FROM your_schema.parent_table A
+// INNER JOIN your_schema.child_table B ON A.id=B.parent_table_id;
+
+
+//3
+// EXPLAIN ANALYZE SELECT A.id, A.name FROM your_schema.parent_table A INNER JOIN your_schema.child_table B ON A.id=B.parent_table_id;
+
+
+//4
+//EXPLAIN (FORMAT JSON, ANALYZE) SELECT * FROM your_schema.child_table;
+
+
+
+
+//Maybe helpful to build db's off of sql files
+//psql -d <url from elephantSQL> -f starwars_postgres_create.sql
