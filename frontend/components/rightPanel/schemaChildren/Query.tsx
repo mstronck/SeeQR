@@ -106,11 +106,12 @@ class Query extends Component<QueryProps, state> {
       <div id="query-panel">
         <h3>Query</h3>
         <button
+          className="input-schema-button"
           onClick={(e) => {
             this.showModal(e);
           }}
         >
-          Edit Schema
+          Input Schema
         </button>
         <SchemaModal show={this.state.show} onClose={this.showModal} />
         <form onSubmit={this.handleQuerySubmit}>
