@@ -59,31 +59,41 @@ Built With *Have built in links the pages
 - [Faker.js](https://github.com/Marak/faker.js)
 - [CodeMirror](https://codemirror.net/)
 
-Interface & Features [Pictures and Gifs everywhere in this section]
-Schema upload methods
-Upon application launch, upload .sql or .tar file when prompted by splash page, or hit cancel.
-The uploaded .sql or .tar file becomes the active database.
-To input new schemas, toggle the “Input Schema” button. Upload a .sql or .tar file or directly input schema code. Remember to provide the schema with a unique label, as it will be assigned to the name property of the newly spun up database connected to the schema.
-Query input
-The center panel is where the query input text field is located, utilizing CodeMirror for SQL styling.
-Provide a unique and concise label for the query as its shorthand identifier in later comparisons against other queries.
-Toggle the submit button in the bottom left to send the query to the selected database.
-Data
-The data table displays data returned by the inputted query.
-History
-The history table shows the latest queries the user submitted irrespective of the database.
-The history table also displays the total rows returned by the query and the total query execution time.
-Results
-The results table displays the scan type, runtime, and the amount of loops the query had to perform in addition to the analytics data available on the history table.
-The results table is schema-specific, showing only query results from the active schema.
-Compare Results
-The comparison table is flexible to the user’s preferences.
-The user selects which queries they want to compare side by side from the ‘Add Query Data’ drop down.
-They can add and remove queries as they see fit
-Dummy data generation
-TBD
-Visualized Analytics
-TBD
+# Interface & Features
+
+- Schema
+  - Upon application launch, upload .sql or .tar file when prompted by splash page, or hit cancel.
+  - The uploaded .sql or .tar file becomes the active database.
+  - To input new schemas, toggle the “Input Schema” button. Upload a .sql or .tar file or directly input schema code. Remember to provide the schema with a unique label, as it will be assigned to the name property of the newly spun up database connected to the schema.
+- Query input
+  - The center panel is where the query input text field is located, utilizing CodeMirror for SQL styling.
+  - Provide a unique and concise label for the query as its shorthand identifier in later comparisons against other queries.
+  - Toggle the submit button in the bottom left to send the query to the selected database.
+- Data
+  - The data table displays data returned by the inputted query.
+- History
+  - The history table shows the latest queries the user submitted irrespective of the database.
+  - The history table also displays the total rows returned by the query and the total query execution time.
+- Results
+  - The results table displays the scan type, runtime, and the amount of loops the query had to perform in addition to the analytics data available on the history table.
+  - The results table is schema-specific, showing only query results from the active schema.
+- Compare
+  - The comparison table is flexible to the user’s preferences.
+  - The user selects which queries they want to compare side by side from the ‘Add Query Data’ drop down.
+  - They can add and remove queries as they see fit.
+- Dummy data generation
+- Visualized Analytics
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -110,20 +120,28 @@ Mercer Stronk @github @linkedIn
 Muhammad Trad @github @linkedIn
 
 
-Contribution and Configuration
+# Contribution and Configuration
 
-SeeQR welcomes contribution and iteration. 
+### SeeQR welcomes contribution and iteration. 
 
-To get started on contributing to this project: 
-Download and Install Docker Desktop (attach link)
-Fork or clone this repo
-Npm install
-Run npm install for application-specific dependencies
-Run global install for: cross-env, webpack, webpack-dev-server, electron, typescript
-Enable sass compiling to css directory 
-To run application during development 
-npm run dev to launch Electron application window and webpack-dev-server.
-npm run resetContainer to reset the container and clear pre-existing SeeQR databases. If error “can’t find postgres-1” is encountered, it is simply an indication that the container is already pruned.
-
-Link to install video post launch :)
+### To get started on contributing to this project: 
+1. Download and Install Docker Desktop
+2. Fork or clone this repository
+3. Npm install
+  - Run npm install for application-specific dependencies.
+  - Run global install for: 'cross-env', 'webpack', 'webpack-dev-server', 'electron', and 'typescript'.
+4. Enable sass compiling to css directory 
+```
+"liveSassCompile.settings.formats": [
+        {
+          "format": "expanded",
+          // "extensionName": ".css",
+          "savePath": "/frontend/assets/stylesheets/css"
+        }
+      ],
+"liveSassCompile.settings.generateMap": false,
+```
+5. To run application during development 
+  - npm run dev to launch Electron application window and webpack-dev-server.
+  - npm run resetContainer to reset the container and clear pre-existing SeeQR databases. If error “can’t find postgres-1” is encountered, it is simply an indication that the container is already pruned.
 
